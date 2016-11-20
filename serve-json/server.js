@@ -6,7 +6,8 @@ var path = require('path')
 var port = 3000
 
 var server = http.createServer(function (req, res) {
-  res.setHeader('Content-Type','/application/json');
+  res.setHeader('Content-Type','text/html');
+  // "/application/json" if I want the file to be downloaded
 
   async.each([
     'du.json',
@@ -18,7 +19,7 @@ var server = http.createServer(function (req, res) {
 
 
   console.log(content);
- // res.end(content);
+  res.write(JSON.stringify(content))
   })
 
 
