@@ -22,7 +22,7 @@ var server = http.createServer(function (req, res) {
   res.write(JSON.stringify(content))
   })
 
-
+  res.end()
 });
 
 server.on('listening', function () {
