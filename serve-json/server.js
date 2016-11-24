@@ -4,7 +4,7 @@ var async = require('async')
 var path = require('path')
 
 var port = 3000
-
+var jsonList = []
 var server = http.createServer(function (req, res) {
   res.setHeader('Content-Type','text/html');
   // "/application/json" if I want the file to be downloaded
@@ -19,8 +19,15 @@ var server = http.createServer(function (req, res) {
 
 
   console.log(content);
-  res.write(JSON.stringify(content))
+  jsonList[jsonList.length] = content;
+  
   })
+
+ // for(x in jsonList){
+      res.write(JSON.stringify(jsonList))
+
+    //}
+    jsonList = [];
 
   res.end()
 });
